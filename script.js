@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Album information script
 // @namespace    https://greasyfork.org/users/238956
-// @version      0.1
+// @version      0.2
 // @description  Generate album information from Wikipedia page
 // @author       CyanideCentral
 // @match        https://en.wikipedia.org/wiki/*
@@ -37,7 +37,7 @@
             var lt = $("a[title='Record label']").parent().next().text();
             lt = lt.trim();
             it += lt.split("\n").join(", ") + '\nRelease date: ';
-            it += $(".published:first").text();
+            it += $(".published:first")[0].innerText;
             var th = $("th:contains('Professional ratings')");
             if (th.length > 0) {
                 var pr = th.parent().parent();
