@@ -37,13 +37,7 @@
             var lt = $("a[title='Record label']").parent().next().text();
             lt = lt.trim();
             it += lt.split("\n").join(", ") + '\nRelease date: ';
-            var dt = $(".published:first").text();
-            var dm = dt.split(",\xa0");
-            var m = '' + (months.indexOf(dm[0].split('\xa0')[0]) + 1);
-            if (m.length == 1) m = '0' + m;
-            var d = dm[0].split('\xa0')[1];
-            if (d.length == 1) d = '0' + d;
-            it += dm[1].substring(0, 4) + "-" + m + "-" + d;
+            it += $(".published:first").text();
             var th = $("th:contains('Professional ratings')");
             if (th.length > 0) {
                 var pr = th.parent().parent();
