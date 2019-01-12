@@ -66,9 +66,7 @@
             $("#temp_area").text(it);
             $("#temp_area").focus();
             $("#temp_area").select();
-            alert(it);
             document.execCommand('copy');
         });
     }
-    //alert('hello world!');
 })();
