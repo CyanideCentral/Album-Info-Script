@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Album information script
 // @namespace    https://greasyfork.org/users/238956
-// @version      0.2
+// @version      0.2.1
 // @description  Generate album information from Wikipedia page
 // @author       CyanideCentral
 // @match        https://en.wikipedia.org/wiki/*
