@@ -26,17 +26,18 @@
         'November',
         'December'
     ];
-    var tb = $('th.summary.album');
+    var tb = $('th.summary.album:first');
     if (tb.length == 0) return;
     else {
         $(":root").append("<div style='position:absolute; top:0; left:-9999px;'><textarea id='temp_area' type='text' rows='1' cols='2'></textarea></div>");
         $("#siteSub").append("\xa0\xa0<a id='getInfo'>Album Info</a>");
         //$("#siteSub").append("\xa0\xa0<a id='getTracks'>Track List</a>");
         $("#getInfo").click(function () {
-            var it = tb.text() + '\nArtist: ' + $('.contributor').text() + '\nLabel: ';
-            var lt = $("a[title='Record label']").parent().next().text();
-            lt = lt.trim();
-            it += lt.split("\n").join(", ") + '\nRelease date: ';
+            var it = tb.text() + '\nArtist: ' + $('.contributor:first').text() + '\nLabel: ';
+            var lt = $("a[title='Record label']:first").parent().next();
+            if (!lt.children().length) lt = lt.text();
+            else lt = lt.find(":not(:has(*))").toArray().map(a => a.text).join(", ")
+            it += lt + '\nRelease date: ';
             it += $(".published:first")[0].innerText;
             var th = $("th:contains('Professional ratings')");
             if (th.length > 0) {
@@ -50,7 +51,9 @@
                     }
                     if (pf != '') {
                         if (mt != '') it += ', ';
-                        it += 'Pitchfork ' + pf.split('/')[0];
+                        pf = pf.split('/')[0];
+                        if (pf.length == 1) pf += ".0";
+                        it += 'Pitchfork ' + pf;
                     }
                 }
             }
